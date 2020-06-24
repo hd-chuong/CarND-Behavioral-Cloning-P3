@@ -151,7 +151,7 @@ Using the one-lap data, the car could advance further but still failed to handle
 
 I decided to give more data on these sharp turns and feed into the model. Also, I tried to increase the left and right angle correction to make sure that when the car was about to drive off the road center, it could turn back more aggressively. 
 
-And the result improved as the car could now handle these sharp turns properly.
+And the result improved as the car could now handle these sharp turns properly, and the reasonable speed of 20 mph.
 
 #### 2. Final Model Architecture
 
@@ -203,6 +203,8 @@ Right image with corrected angle `alpha - 0.3`
 
 ![Right after bridge][right_after_bridge]
 ![Right sharp][right_sharp]
+
+As the initial versions of the model failed on the sharp turn, I created more dataset on these hard steering scenarios. These extra data on the sharp turn was effective on handling both left and right sharp turn.
 
 ### Reference
 1. [Citlaligm's solution](https://github.com/citlaligm/Behavioral-cloning)

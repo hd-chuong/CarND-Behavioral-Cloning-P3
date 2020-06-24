@@ -29,14 +29,14 @@ def data(file):
     return lines
         
 # generator for fit_generator
-def generator_images(data, batchSize = 32):
+def generate_data(data, batchSize = 32):
     while True:
         data = shuffle(data)
         for i in range(0, len(data), int(batchSize/4)):
             X_batch = []
             y_batch = []
-            details = data[i: i+int(batchSize/4)]
-            for line in details:
+            chunk = data[i: i+int(batchSize/4)]
+            for line in chunk:
                 center_image = cv2.imread(line[0])
                 flipped_image = np.fliplr(center_image)
                 left_image = cv2.imread(line[1])
@@ -89,19 +89,19 @@ if not REUSE:
     model.add(Dense(1))
 
     model.compile(loss='mse', optimizer="adam")
-    model.fit_generator(generator_images(training_data, 64), 
+    model.fit_generator(generate_data(training_data, 64), 
                         samples_per_epoch = len(training_data)*4, 
                         nb_epoch = EPOCHES, 
-                        validation_data=generator_images(validation_data, 64), 
+                        validation_data=generate_data(validation_data, 64), 
                         nb_val_samples=len(validation_data))
 
 else:
     print("--- Loading model {} ---".format(version))
     model = load_model("../model{}.h5".format(version))
-    model.fit_generator(generator_images(training_data), 
+    model.fit_generator(generate_data(training_data), 
                         samples_per_epoch = len(training_data)*4, 
                         nb_epoch = EPOCHES, 
-                        validation_data=generator_images(validation_data), 
+                        validation_data=generate_data(validation_data), 
                         nb_val_samples=len(validation_data))
 
 
