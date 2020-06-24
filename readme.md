@@ -178,9 +178,7 @@ Here is a visualization of the architecture:
 ![Visualisation of NVIDIA model][nvidia_model]
 #### 3. Creation of the Training Set & Training Process
 
-To capture good driving behavior, I first recorded one laps on track one using center lane driving. Here is an example image of center lane driving:
-
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to turn back to the lane centre when it drives off the center. These images show what a recovery looks like starting from ... :
+To capture good driving behavior, I first recorded one laps on track one using center lane driving. Here is an example image of center lane driving.
 
 To augment the data set, I also flipped the image, with the associated angle being the opposite of the original angle. This increased the range of the dataset and helped the model generalize to drive in both direction.
 
@@ -193,6 +191,8 @@ Flipped image with angle  `-alpha`
 
 ![Flipped image][flip_sharp]
 ![Flipped image bridge][flip_bridge]
+
+To help the vehicle recovering from the left side and right sides of the road back to center, I used the left and right camera image, with aggressive correction towards the center.
 
 Left image with corrected angle `alpha + 0.4`
 
