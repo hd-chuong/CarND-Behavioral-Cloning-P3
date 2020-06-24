@@ -19,6 +19,7 @@ REUSE = False
 EPOCHES = 1
 LOG = "./backup/right-turn.csv"
 
+# fetch data from the driving log
 def data(file):
     lines = []
     with open(file) as csvfile:
