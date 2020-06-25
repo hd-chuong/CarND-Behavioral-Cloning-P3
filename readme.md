@@ -92,8 +92,6 @@ def generate_data(data, batchSize = 32):
             yield shuffle(X_batch, y_batch)
 ```
 
-
-
 For each batch, data is fetched from the randomly shuffled dataset, each batch contains original center data, flipped data, left camera and right camera data with angle correction (0.4 for left image and - 0.3 for right image).
 ### Model Architecture and Training Strategy
 
