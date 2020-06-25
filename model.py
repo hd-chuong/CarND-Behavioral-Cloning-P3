@@ -4,7 +4,7 @@ import csv
 import os
 import numpy as np
 from keras import Sequential, optimizers
-from keras.layers import Lambda, Dense, Flatten, Cropping2D
+from keras.layers import Lambda, Dense, Flatten, Cropping2D, Dropout
 from keras.layers.convolutional import Convolution2D
 from keras.layers.pooling import MaxPooling2D
 from keras.models import load_model
@@ -17,7 +17,7 @@ LEFT_ANGLE_CORRECTION = 0.4
 RIGHT_ANGLE_CORRECTION = -0.3
 REUSE = False
 EPOCHES = 1
-LOG = "./backup/right-turn.csv"
+LOG = "./backup/all.csv"
 
 # fetch data from the driving log
 def data(file):
@@ -83,6 +83,7 @@ if not REUSE:
     model.add(Convolution2D(64,3,3, activation='relu'))
     model.add(Convolution2D(64,3,3, activation='relu'))
     model.add(Flatten())
+    model.add(Dropout(0.5))
     model.add(Dense(100))
     model.add(Dense(50))
     model.add(Dense(10))

@@ -15,7 +15,7 @@ The goals / steps of this project are the following:
 * Test that the model successfully drives around track one without leaving the road
 * Summarize the results with a written report
 
-([Youtube link to watch the video](https://www.youtube.com/watch?v=b7DRvTuf9EU) )
+([Youtube link to watch the video](https://youtu.be/-5laJ5qorvY) )
 
 [//]: # (Image References)
 
@@ -42,7 +42,7 @@ My project includes the following files:
 * drive.py for driving the car in autonomous mode
 * model.h5 containing a trained convolution neural network 
 * writeup_report.md summarizing the results
-* [Youtube link for one full lap record.](https://www.youtube.com/watch?v=b7DRvTuf9EU) 
+* [Youtube link for one full lap record.](https://youtu.be/-5laJ5qorvY) 
 
 #### 2. Submission includes functional code
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
@@ -143,6 +143,7 @@ For details about how I created the training data, see the next section.
 #### 1. Solution Design Approach
 
 My first step was to use a simple CNN which has 3 convolution layers and 3 fully connected layers which aims to get myself familiarize with the simulator.
+
 I created one-lap driving dataset however, the initial model failed to keep the car long near the road centre as it is too simple.
 
 I decided to move to the NVIDIA model because it was widely accepted that the NVIDIA model is successful in the behavioral cloning task.
@@ -151,7 +152,9 @@ Using the one-lap data, the car could advance further but still failed to handle
 
 I decided to give more data on these sharp turns and feed into the model. Also, I tried to increase the left and right angle correction to make sure that when the car was about to drive off the road center, it could turn back more aggressively. 
 
-And the result improved as the car could now handle these sharp turns properly, and the reasonable speed of 20 mph.
+And the result improved as the car could now handle these sharp turns properly, and the reasonable speed of 15 mph.
+
+To make sure the car does not drives off the drivable part, I cleaned the data to make sure that most of the signs where the car was about to drive off is eliminated.
 
 #### 2. Final Model Architecture
 
